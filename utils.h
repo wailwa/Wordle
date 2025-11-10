@@ -14,5 +14,5 @@ void green (char c, int pos, char **wordlist);
 
 void yellow (char c, int pos, char **wordlist);
 
-void gray (char c, int pos, char **wordlist);
+void gray (char c, int pos, char **wordlist, int len);
 #endif

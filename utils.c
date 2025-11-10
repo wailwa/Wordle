@@ -81,17 +81,47 @@ int GetPos(char c, char str[]){
 }
 
 //proc green that eliminates all the words that don't contain the green letter in the right position
-
-void green(char c, int pos, char **wordlist, int len){
-    char **templist;
-    int j = 0;;
-    for (int i= 0; i < len; i++){
-        if(strcmp(wordlist[i][pos] , c) == 0 ){
-            templist[j] = wordlist[i];
-            j++;
-
+//mostly wrong for now will fix later          
+void filter_green(char c, int pos, char **wordlist, int *len) {
+    int j = 0;
+    for (int i = 0; i < *len; i++) {
+        if (wordlist[i][pos] == c) {
+            wordlist[j++] = wordlist[i];
         }
     }
-    wordlist = templist;
-    len = j;
+    *len = j;
+}
+
+void filter_yellow(char c, int pos, char **wordlist, int *len) {
+    int j = 0;
+    for (int i = 0; i < *len; i++) {
+        int contains = 0;
+        for (int k = 0; wordlist[i][k] != '\0'; k++) {
+            if (wordlist[i][k] == c) contains = 1;
+        }
+
+        if (contains && wordlist[i][pos] != c) {
+            wordlist[j++] = wordlist[i];
+        }
+    }
+    *len = j;
+}
+
+    
+
+void filter_gray(char c, char **wordlist, int *len) {
+    int j = 0;
+    for (int i = 0; i < *len; i++) {
+        int found = 0;
+        for (int k = 0; wordlist[i][k] != '\0'; k++) {
+            if (wordlist[i][k] == c) {
+                found = 1;
+                break;
+            }
+        }
+        if (!found) {
+            wordlist[j++] = wordlist[i];
+        }
+    }
+    *len = j;
 }
