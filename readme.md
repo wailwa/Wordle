@@ -6,7 +6,6 @@ A simple command line mini project about the game wordle. Additionally a solver 
 ## Features
 - The base wodle game.
 - A smart code that will solve the game in the least amount of guesses possible
-- Feature 3
 
 ## Installation
 Step-by-step guide:
